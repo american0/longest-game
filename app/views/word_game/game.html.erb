@@ -1,0 +1,35 @@
+<% start_time = Time.now.to_i %>
+
+
+<div class="containter text-center padding">
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <h2>The Longest Word Game</h2>
+      <% @grid.each  do |letter| %>
+      <div class="btn-group">
+        <button type="button" class="btn btn-primary"><%= letter.upcase %></button>
+      </div>
+      <% end %>
+      <% @grid = @grid.join %>
+      <form action="/score" class="form-inline padding" method="get">
+        <div class="form-group">
+          <label for="attempt"></label>
+          <input name="attempt" id="attempt" type="text" placeholder="Give me your best shot!">
+        </div>
+        <input type="hidden" name="start" value="<%= start_time %>">
+        <input type="hidden" name="grid" value="<%= @grid %>">
+        <button type="submit" class="btn btn-primary">Go!</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
